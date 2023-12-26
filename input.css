@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .background{
     background-image: url("https://media.istockphoto.com/id/1257951336/photo/transparent-umbrella-under-rain-against-water-drops-splash-background-rainy-weather-concept.jpg?s=612x612&w=0&k=20&c=lNvbIw1wReb-owe7_rMgW8lZz1zElqs5BOY1AZhyRXs=");
 background-repeat: no-repeat;

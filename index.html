@@ -5,24 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="input.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
    
-    <div class="background flex flex-col items-center justify-center min-h-screen ">
-        <div class="container m-4 h-screen">
-            <div class="flex gap-2">
-                <div class="flex justify-center items-center bg-slate-800/80 w-3/5 h-screen" id="current">
+    <div class="background flexitems-center justify-center ">
+        
+            <div class="flex gap-2 flex-col w-screen md:flex-row justify-center align-center">
+                <div class="flex justify-center items-center bg-slate-800/80 w-screen md:w-3/5 h-screen" id="current">
                     <div id="icona-tempo" class="w-6/12 border-lime-950 text-gray-400 text-center font-bold text-6xl">
                         <i class="fa-solid fa-cloud-showers-water"></i> <br><h1 class="p-3">BENNI <br> Meteo App</h1>
                     </div>
                 </div>
-                <div class="flex justify-center items-center bg-slate-800/80 w-3/5 h-screen">
-                    <div id="icona-tempo" class="w-6/12 text-gray-400 text-center font-bold text-3xl">
-                       
-  <div class="flex flex-col  justify-center align-center" id="current1">
+                <div class="flex justify-center items-center bg-slate-800/80 w-screen md:w-3/5 h-screen">
+  <div class="flex flex-col  justify-center align-center  text-gray-400 text-center font-bold text-3xl" id="current1">
     <!-- Input: Designation [h-12] & min-w-[12rem] -->
     <input class="h-12 min-w-auto p-3 rounded-lg mb-3 bg-transparent bg-transparent::focus  border-none::focus" type="text" placeholder="inserisci una città " id="locality"/>
     <!-- Button: Submit [h-12] -->
@@ -30,12 +27,11 @@
     
   </div>
 
-                    </div>
+                    
                 </div>
 
             </div>
 
-        </div>
     </div>
    
   </div>
