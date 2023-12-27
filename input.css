@@ -9,3 +9,6 @@ background-repeat: no-repeat;
 background-position: center;
 background-size: cover;
 }
+input:filled{
+    background-color: transparent !important;
+}

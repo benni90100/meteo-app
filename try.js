@@ -22,7 +22,7 @@ async function getMeteoData() {
         const ogginumero = dataDiOggi.getDate();
         console.log(oggi);
         const meseOggi = dataDiOggi.getMonth() + 1;
-
+        currenHourstHTML.innerHTML=""
         let i = 1;
         // console.log(dataArray1[0]);
         previsioniGiornaliere.forEach(giorni => {
