@@ -4,20 +4,12 @@ const input = document.querySelector("#locality")
 const btn = document.querySelector("#btn")
 async function getMeteoData() {
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=70d79bef89b2412db04175551232312&q=${input.value}&days=6&aqi=no&alerts=no`)
+        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=70d79bef89b2412db04175551232312&q=${input.value}&days=4&aqi=no&alerts=no`)
         const meteoData = await response.json()
         // console.log(meteoData)
         //primo step: nome della città data e ora attuale
         const location = meteoData.location
         const city = location.name //città
-        const localTime = location.localtime //data e ora odierna
-        const dataArray = localTime.split("-")
-        const dataArray1 = dataArray[2].split(" ")
-        // console.log(localTime);
-        console.log(dataArray);
-        //ricaviamo le informazioni meteo attuali
-        // console.log(meteoData.current)
-        //step due ricaviamo il primo layout contenente queste informazioni
         const current = meteoData.current
         const currentTemp = current.temp_c
         const currentFeelsTemp = current.feelslike_c
@@ -27,31 +19,44 @@ async function getMeteoData() {
         // console.log(icon);
         const previsioni = meteoData.forecast
         const previsioniGiornaliere = previsioni.forecastday
+        const localTime = location.localtime //data e ora odierna
+        console.log(localTime);
+        const dataeOra = localTime.split(" ")
+        const dataOdierna = dataeOra[0].split("-")
+        const giorno = parseInt(dataOdierna[2])
+        const mese = parseInt(dataOdierna[1] - 1)
+        const anno = parseInt(dataOdierna[0])
+        console.log(dataOdierna)
+        const dataDiOggi = new Date(anno, mese, giorno)
+        console.log(dataDiOggi)
+        const oggi = dataDiOggi.getDay()
+        let ogginumero = dataDiOggi.getDate()
+        console.log(oggi);
+        let meseOggi = dataDiOggi.getMonth()+1
         i = 1
-        console.log(dataArray1[0]);
+        // console.log(dataArray1[0]);
         previsioniGiornaliere.forEach(giorni => {
             const giornate = giorni.day
+            if (ogginumero+i==32) {
+                ogginumero=1
+                i=0
+                meseOggi+=1
+                
+                if (meseOggi===13) {
+                    meseOggi=1
+                    if (meseOggi<9&&meseOggi>=1) {
+                        meseOggi=`0${meseOggi}`
+                    }
+                }
+            }
+            
             const condizioni = giornate.condition
             const iconaCondizioni = condizioni.icon
-            console.log(giornate)
-            //controllo e correzioni sulle date
+           
             //TODO: ci sono i cazzo di metodi sulle date
-            const giornoAggiornato = parseInt(dataArray1[0]) + i
-            let meseAggiornato = dataArray[1]
-            if (giornoAggiornato===31) {
-                i=`${-parseInt(dataArray1)}`
-            }
-            
-            if (giornoAggiornato == 1) {
-                meseAggiornato = parseInt(dataArray[1]) + 1
-            }
-            if (meseAggiornato > 12) {
-                meseAggiornato = `0${1}`
-            }
-            
             currenHourstHTML.innerHTML += `
             <div class="flex justify-center align-center text-sm bg-slate-700/40 m-4 ">
-            <div class="p-6">${giornoAggiornato}-${meseAggiornato}</div>
+            <div class="p-6">${ogginumero+i}/${meseOggi}</div>
                 <div class="flex align-center justify-center"><img src=" ${iconaCondizioni}"/></div>
                 <div class="p-2">temp max <br/>${giornate.maxtemp_c}</div>
                 <div class="p-2">temp min <br>${giornate.mintemp_c}</div>
@@ -71,7 +76,7 @@ async function getMeteoData() {
             <div>
                 <h2 class="p-2 text-3xl">${city}</h2>
                 
-                <h3 class="">${dataArray1[0]}-${dataArray[1]} -${dataArray[0]} ${dataArray1[1]}</h3>
+                <h3 class="">${dataDiOggi}</h3>
             </div>
             <div class="p-2"><img src="${icon}"/></div>
             <div class="flex">
