@@ -10,7 +10,7 @@ const image = [
 async function getMeteoData() {
     try {
 
-        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=70d79bef89b2412db04175551232312&q=${input.value}&days=2&aqi=no&alerts=no`)
+        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=70d79bef89b2412db04175551232312&q=${input.value}&days=4&aqi=no&alerts=no`)
         const meteoData = await response.json()
         console.log(meteoData)
         //primo step: nome della città data e ora attuale
